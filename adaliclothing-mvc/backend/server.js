@@ -14,6 +14,7 @@ const initDb = async () => {
   try {
     pool = mysql.createPool({
       host: 'localhost',
+      port: 3307,
       user: 'webshoppp',
       password: 'Premo900',
       database: 'webshoppp',

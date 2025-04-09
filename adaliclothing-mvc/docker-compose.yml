@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: webshoppp
+      MYSQL_USER: webshoppp
+      MYSQL_PASSWORD: Premo900
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./database/init:/docker-entrypoint-initdb.d
+
+volumes:
+  mysql_data:
