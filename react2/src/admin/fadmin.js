@@ -79,7 +79,7 @@ export default function Fadmin() {
     totalDiscount: 0
   });
 
- 
+
   const handleSelectAllUsers = () => {
     if (selectedUsers.length === users.length) {
       setSelectedUsers([]);
@@ -88,7 +88,7 @@ export default function Fadmin() {
     }
   };
 
- 
+
   const handleSelectUser = (userId) => {
     if (selectedUsers.includes(userId)) {
       setSelectedUsers(selectedUsers.filter(id => id !== userId));
@@ -97,7 +97,7 @@ export default function Fadmin() {
     }
   };
 
- 
+
   const handleOpenCouponDialog = () => {
     if (selectedUsers.length === 0) {
       setSnackbarMessage('Válassz ki legalább egy felhasználót!');
@@ -113,7 +113,7 @@ export default function Fadmin() {
     setCouponDialogOpen(false);
   };
 
-  
+
   const handleSendSelectedCoupons = async () => {
     setIsSendingCoupons(true);
     setCouponResult(null);
@@ -142,7 +142,7 @@ export default function Fadmin() {
         setSnackbarOpen(true);
         setSelectedUsers([]);
         
-        
+
         fetchCouponStats();
         fetchCouponHistory();
       } else {
@@ -169,12 +169,12 @@ export default function Fadmin() {
     }
   };
 
- 
+
   const handleSendCoupons = () => {
     setAllCouponDialogOpen(true);
   };
   
-  
+
   const handleSendAllCoupons = async () => {
     setIsSendingCoupons(true);
     setCouponResult(null);
@@ -202,7 +202,7 @@ export default function Fadmin() {
         setSnackbarSeverity('success');
         setSnackbarOpen(true);
         
-        
+  
         fetchCouponStats();
         fetchCouponHistory();
       } else {
@@ -229,7 +229,7 @@ export default function Fadmin() {
     }
   };
 
-  
+
   const fetchCouponStats = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/coupons/stats');
@@ -243,7 +243,7 @@ export default function Fadmin() {
     }
   };
 
- 
+
   const fetchCouponHistory = async () => {
     setIsLoadingHistory(true);
     try {
@@ -266,7 +266,7 @@ export default function Fadmin() {
         const response = await fetch('http://localhost:5000/users');
         const data = await response.json();
         
-        
+
         const usersWithCoupons = await Promise.all(data.map(async (user) => {
           try {
             const couponResponse = await fetch(`http://localhost:5000/api/coupons/user-coupons/${user.f_azonosito}`);
@@ -274,10 +274,10 @@ export default function Fadmin() {
             if (couponResponse.ok) {
               const coupons = await couponResponse.json();
               
-              
+
               const activeCoupon = coupons.find(coupon => !coupon.isUsed && !coupon.isExpired);
               
-              
+         
               const usedCouponsCount = coupons.filter(coupon => coupon.isUsed).length;
               
               return {
@@ -318,7 +318,7 @@ export default function Fadmin() {
       
         if (response.ok) {
           setUsers(users.filter(user => user.f_azonosito !== userId));
-          
+   
           if (selectedUsers.includes(userId)) {
             setSelectedUsers(selectedUsers.filter(id => id !== userId));
           }
@@ -525,7 +525,7 @@ export default function Fadmin() {
               icon={<HistoryIcon fontSize={isMobile ? "small" : "medium"} />} 
               iconPosition="start" 
             />
-              <Tab 
+            <Tab 
               label={isMobile ? "Rendelések" : "Rendelések kezelése"} 
               icon={<ShoppingBasketIcon fontSize={isMobile ? "small" : "medium"} />} 
               iconPosition="start" 
@@ -631,7 +631,6 @@ export default function Fadmin() {
                           Regisztrált: {new Date(user.reg_datum).toLocaleDateString()}
                         </Typography>
                         
-                        {/* Kupon információk megjelenítése */}
                         <Box sx={{ mt: 2, pt: 2, borderTop: '1px solid #eee' }}>
                           <Typography variant="subtitle2" gutterBottom sx={{ 
                             fontSize: { xs: '0.75rem', sm: '0.8rem', md: '0.875rem' } 
@@ -1047,32 +1046,36 @@ export default function Fadmin() {
         }}
       >
         <Table size={isMobile ? "small" : "medium"}>
-          <TableHead>
+        <TableHead>
             <TableRow>
-              <TableCell sx={{ 
+              <TableCell sx={{
                 fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.875rem' }
               }}>Rendelés ID</TableCell>
-              <TableCell sx={{ 
+              <TableCell sx={{
                 display: { xs: 'none', sm: 'table-cell' },
                 fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.875rem' }
               }}>Dátum</TableCell>
-              <TableCell sx={{ 
+              <TableCell sx={{
                 fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.875rem' }
               }}>Vevő</TableCell>
-              <TableCell sx={{ 
+              <TableCell sx={{
                 display: { xs: 'none', md: 'table-cell' },
                 fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.875rem' }
-              }}>Termék</TableCell>
-              <TableCell sx={{ 
+              }}>Termék ID</TableCell>
+              <TableCell sx={{
                 fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.875rem' }
               }}>Mennyiség</TableCell>
-              <TableCell sx={{ 
+              <TableCell sx={{
                 fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.875rem' }
-              }}>Ár</TableCell>
-              <TableCell sx={{ 
+              }}>Teljes ár</TableCell>
+              <TableCell sx={{
+                display: { xs: 'none', md: 'table-cell' },
+                fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.875rem' }
+              }}>Egységár</TableCell>
+              <TableCell sx={{
                 fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.875rem' }
               }}>Státusz</TableCell>
-              <TableCell sx={{ 
+              <TableCell sx={{
                 fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.875rem' }
               }}>Műveletek</TableCell>
             </TableRow>
@@ -1118,7 +1121,11 @@ export default function Fadmin() {
                   }}>{order.mennyiseg}</TableCell>
                   <TableCell sx={{ 
                     fontSize: { xs: '0.7rem', sm: '0.75rem', md: '0.875rem' }
-                  }}>{order.ar.toLocaleString()} Ft</TableCell>
+                  }}>{order.teljes_ar.toLocaleString()} Ft</TableCell>
+                  <TableCell sx={{ 
+                      display: { xs: 'none', md: 'table-cell' },
+                      fontSize: { xs: '0.7rem', sm: '0.75rem', md: '0.875rem' }
+                    }}>{order.egysegar.toLocaleString()} Ft</TableCell>
                   <TableCell sx={{ 
                     fontSize: { xs: '0.7rem', sm: '0.75rem', md: '0.875rem' }
                   }}>
@@ -1286,7 +1293,7 @@ export default function Fadmin() {
             }}>
               {orders
                 .filter(order => order.statusz !== 'Törölve')
-                .reduce((total, order) => total + (Number(order.ar) || 0), 0)
+                .reduce((total, order) => total + (Number(order.teljes_ar) || 0), 0)
                 .toLocaleString()} Ft
             </Typography>
           </CardContent>
@@ -1378,6 +1385,7 @@ export default function Fadmin() {
     </Button>
   </DialogActions>
 </Dialog>
+
                       <Button
           onClick={() => navigate('/admin')}
           variant="contained"
@@ -1391,7 +1399,7 @@ export default function Fadmin() {
         </Button>
                     </Container>
               
-                    {/* Kupon küldési dialógus a kiválasztott felhasználóknak */}
+                 
                     <Dialog 
                       open={couponDialogOpen} 
                       onClose={handleCloseCouponDialog}
@@ -1451,8 +1459,7 @@ export default function Fadmin() {
                         </Button>
                       </DialogActions>
                     </Dialog>
-              
-                    {/* Kupon küldési dialógus minden felhasználónak */}
+            
                     <Dialog 
                       open={allCouponDialogOpen} 
                       onClose={() => setAllCouponDialogOpen(false)}
@@ -1517,7 +1524,7 @@ export default function Fadmin() {
                       </DialogActions>
                     </Dialog>
 
-                    <Dialog 
+                   <Dialog 
                       open={deleteDataDialogOpen} 
                       onClose={() => setDeleteDataDialogOpen(false)}
                       maxWidth="sm"
@@ -1570,8 +1577,7 @@ export default function Fadmin() {
                         </Button>
                       </DialogActions>
                     </Dialog>
-              
-                    {/* Snackbar értesítések */}
+             
                     <Snackbar
                       open={snackbarOpen}
                       autoHideDuration={6000}

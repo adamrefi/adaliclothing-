@@ -90,7 +90,7 @@ class ProductModel {
 
   async updateStock(productId, quantity) {
     try {
-   
+    
       const [currentStock] = await this.db.execute(
         'SELECT keszlet FROM termekek WHERE id = ?',
         [productId]
@@ -100,13 +100,13 @@ class ProductModel {
         throw new Error('Termék nem található');
       }
       
-     
+
       await this.db.execute(
         'UPDATE termekek SET keszlet = keszlet - ? WHERE id = ?',
         [quantity, productId]
       );
       
-    
+
       const [rows] = await this.db.execute(
         'SELECT id, nev, keszlet FROM termekek WHERE id = ?',
         [productId]
@@ -119,7 +119,7 @@ class ProductModel {
     }
   }
 
- 
+
   async getLowStockProducts(threshold = 5) {
     try {
       const [rows] = await this.db.execute(

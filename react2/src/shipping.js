@@ -74,9 +74,9 @@ const showAlert = (message, severity = 'error', title = '') => {
   setAlertOpen(true);
 };
 
-const discountAmount = Math.round((totalPrice * discountPercentage) / 100);
-const shippingCost = totalPrice > 19999 ? 0 : 1590;
-const finalPrice = totalPrice - discountAmount + shippingCost;
+const discountAmount = Math.round((validTotalPrice * validDiscountPercentage) / 100);
+const shippingCost = validTotalPrice > 19999 ? 0 : 1590;
+const finalPrice = validTotalPrice - discountAmount + shippingCost;
 
 const validateCoupon = async () => {
   if (!couponCode) {
@@ -375,13 +375,7 @@ const handleSubmitOrder = async () => {
         }
         throw new Error(errorData.error || 'Hiba történt a rendelés során');
       }
-      
-    
-      await fetch(`http://localhost:5000/termekek/${item.id}/stock`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ quantity: item.mennyiseg })
-      });
+     
     }
 
     const emailResponse = await fetch('http://localhost:5000/send-confirmation', {
@@ -414,10 +408,8 @@ const handleSubmitOrder = async () => {
     
    
     if (orderData.fizetesi_mod === 'kartya') {
-    
       showAlert('Rendelésed sikeresen elküldtük! Az értékelés után átirányítunk a fizetési oldalra.', 'success', 'Sikeres rendelés');
     } else {
-      
       showAlert('Rendelésed sikeresen elküldtük! Hamarosan emailben értesítünk a részletekről.', 'success', 'Sikeres rendelés');
     }
     
@@ -453,9 +445,8 @@ const saveRatingToDatabase = async (rating, comment) => {
     if (response.ok) {
       console.log('Értékelés sikeresen mentve');
       
-   
+      // Fizetési mód alapján navigálunk
       if (orderData.fizetesi_mod === 'kartya') {
-    
         navigate('/payment-simulation', { 
           state: { 
             orderId: orderId, 
@@ -471,19 +462,19 @@ const saveRatingToDatabase = async (rating, comment) => {
           } 
         });
       } else {
-      
         navigate('/kezdolap'); 
       }
       return true;
     } else {
       console.error('Hiba az értékelés mentésekor:', responseData.error);
      
+
       if (orderData.fizetesi_mod === 'kartya') {
         navigate('/payment-simulation', { 
           state: { 
-            orderId: orderId, 
-            amount: finalPriceState, 
-            items: orderItems, 
+            orderId: orderId,
+            amount: finalPriceState,
+            items: orderItems,
             shippingDetails: {
               name: orderData.nev,
               phoneNumber: orderData.telefonszam,
@@ -500,12 +491,12 @@ const saveRatingToDatabase = async (rating, comment) => {
     }
   } catch (error) {
     console.error('Hiba az értékelés mentésekor:', error);
-    
+   
     if (orderData.fizetesi_mod === 'kartya') {
       navigate('/payment-simulation', { 
         state: { 
-          orderId: orderId, 
-          amount: finalPriceState, 
+          orderId: orderId,
+          amount: finalPriceState,
           items: orderItems,
           shippingDetails: {
             name: orderData.nev,
@@ -569,11 +560,11 @@ const saveRatingToDatabase = async (rating, comment) => {
     if (userData) {
       const user = JSON.parse(userData);
       
-      
+     
       if (user.kupon && !user.kupon_hasznalva) {
        
         if (user.kupon.includes('%')) {
-          
+         
           const discountMatch = user.kupon.match(/(\d+)%/);
           if (discountMatch && discountMatch[1]) {
             const discountAmount = parseInt(discountMatch[1]);
@@ -587,11 +578,11 @@ const saveRatingToDatabase = async (rating, comment) => {
         }
         
       } 
-    
+     
       else if (user.email_kupon && !user.email_kupon_hasznalva) {
-      
+       
         if (user.email_kupon.includes('%')) {
-         
+        
           const discountMatch = user.email_kupon.match(/(\d+)%/);
           if (discountMatch && discountMatch[1]) {
             const discountAmount = parseInt(discountMatch[1]);
@@ -603,9 +594,9 @@ const saveRatingToDatabase = async (rating, comment) => {
             });
           }
         }
-        
+       
       }
-      
+   
       else {
         setCouponStatus({ 
           available: false, 
@@ -626,7 +617,7 @@ const saveRatingToDatabase = async (rating, comment) => {
         return;
       }
       
-     
+      
       const response = await fetch(`http://localhost:5000/api/coupons/user-coupons/${userData.f_azonosito}`);
       
       if (!response.ok) {
@@ -635,14 +626,14 @@ const saveRatingToDatabase = async (rating, comment) => {
       
       const data = await response.json();
       
-  
+      
       if (data && data.length > 0) {
        
         const activeRegCoupon = data.find(c => 
           c.type === 'registration' && !c.isUsed && !c.isExpired
         );
         
-       
+        
         const activeEmailCoupon = data.find(c => 
           c.type === 'email' && !c.isUsed && !c.isExpired
         );
@@ -677,14 +668,14 @@ const saveRatingToDatabase = async (rating, comment) => {
   
 
   useEffect(() => {
-    
+   
     fetchUserCoupons().then(coupons => {
       if (coupons && coupons.length > 0) {
        
         const activeCoupon = coupons.find(c => !c.isUsed && !c.isExpired);
         
         if (activeCoupon) {
-         
+        
           setCouponStatus({ 
             available: true, 
             used: false,
@@ -1077,7 +1068,7 @@ const saveRatingToDatabase = async (rating, comment) => {
     )}
   </Box>
   
-  {/* Kedvezmény megjelenítése */}
+
   {appliedCoupon && (
     <Box sx={{ 
       display: 'flex', 
@@ -1098,7 +1089,7 @@ const saveRatingToDatabase = async (rating, comment) => {
   )}
 
 
-  {/* Add free shipping notification */}
+
   {totalPrice > 19999 && (
     <Box sx={{ 
       display: 'flex', 
@@ -1129,8 +1120,8 @@ const saveRatingToDatabase = async (rating, comment) => {
   >
     <Typography sx={{ color: '#fff' }} variant="h6">Végösszeg:</Typography>
     <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#fff' }}>
-      {finalPrice.toLocaleString()} Ft
-    </Typography>
+  {!isNaN(finalPrice) ? finalPrice.toLocaleString() : "0"} Ft
+</Typography>
   </Box>
 
   
@@ -1374,61 +1365,61 @@ const saveRatingToDatabase = async (rating, comment) => {
     />
     
     <Button
-      onClick={async () => {  
-        if (rating === 0) {
-          alert('Kérjük, válassz egy értékelést!');
-          return;
+  onClick={async () => {  
+    if (rating === 0) {
+      alert('Kérjük, válassz egy értékelést!');
+      return;
+    }
+    
+    setIsLoading(true);
+    
+    const success = await saveRatingToDatabase(rating, comment);
+    
+    if (success && orderData.fizetesi_mod === 'kartya') {
+      navigate('/payment-simulation', {
+        state: {
+          orderId: orderId,
+          amount: finalPriceState,
+          items: orderItems,
+          shippingDetails: {
+            name: orderData.nev,
+            phoneNumber: orderData.telefonszam,
+            zipCode: orderData.irsz,
+            city: orderData.telepules,
+            address: orderData.kozterulet
+          }
         }
-        
-        setIsLoading(true);
-        
-        const success = await saveRatingToDatabase(rating, comment);
-        
-        if (success && orderData.fizetesi_mod === 'kartya') {
-          navigate('/payment-simulation', {
-            state: {
-              orderId: orderId,
-              amount: finalPriceState,
-              items: orderItems,
-              shippingDetails: {
-                name: orderData.nev,
-                phoneNumber: orderData.telefonszam,
-                zipCode: orderData.irsz,
-                city: orderData.telepules,
-                address: orderData.kozterulet
-              }
-            }
-          });
-        } else if (success) {
-          navigate('/kezdolap');
-        }
-        
-        setOrderSuccess(false);
-        setIsLoading(false);
-      }}
-      variant="contained"
-      disabled={isLoading}
-      sx={{
-        mt: { xs: 1, sm: 1.5, md: 2 },
-        fontSize: { xs: '0.75rem', sm: '0.85rem', md: '1rem' },
-        padding: { xs: '6px 10px', sm: '8px 16px', md: '10px 20px' },
-        borderRadius: { xs: '4px', sm: '6px' },
-        textTransform: 'none',
-        lineHeight: 1.2,
-        height: { xs: '32px', sm: 'auto' },
-        minHeight: { xs: '32px', sm: '36px', md: '40px' },
-        whiteSpace: { xs: 'normal', md: 'nowrap' }
-      }}
-    >
-      {isLoading ? (
-        <CircularProgress size={16} color="inherit" sx={{ mr: 1 }} />
-      ) : null}
-      {orderData.fizetesi_mod === 'kartya' ? (
-        window.innerWidth < 400 ? 'Tovább a fizetéshez' : 'Értékelés küldése és tovább a fizetéshez'
-      ) : (
-        'Értékelés küldése'
-      )}
-    </Button>
+      });
+    } else if (success) {
+      navigate('/kezdolap');
+    }
+    
+    setOrderSuccess(false);
+    setIsLoading(false);
+  }}
+  variant="contained"
+  disabled={isLoading}
+  sx={{
+    mt: { xs: 1, sm: 1.5, md: 2 },
+    fontSize: { xs: '0.75rem', sm: '0.85rem', md: '1rem' },
+    padding: { xs: '6px 10px', sm: '8px 16px', md: '10px 20px' },
+    borderRadius: { xs: '4px', sm: '6px' },
+    textTransform: 'none',
+    lineHeight: 1.2,
+    height: { xs: '32px', sm: 'auto' },
+    minHeight: { xs: '32px', sm: '36px', md: '40px' },
+    whiteSpace: { xs: 'normal', md: 'nowrap' }
+  }}
+>
+  {isLoading ? (
+    <CircularProgress size={16} color="inherit" sx={{ mr: 1 }} />
+  ) : null}
+  {orderData.fizetesi_mod === 'kartya' ? (
+    window.innerWidth < 400 ? 'Tovább a fizetéshez' : 'Értékelés küldése és tovább a fizetéshez'
+  ) : (
+    'Értékelés küldése'
+  )}
+</Button>
   </Box>
 </Dialog>
 

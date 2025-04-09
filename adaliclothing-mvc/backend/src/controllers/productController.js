@@ -138,7 +138,7 @@ class ProductController {
     try {
       console.log('Beérkezett adatok:', req.body);
       
-      
+
       const { kategoriaId, ar, nev, leiras, meret, imageUrl, images, feltolto } = req.body;
       
       if (!kategoriaId || !ar || !nev || !leiras || !meret || !imageUrl) {
