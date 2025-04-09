@@ -60,6 +60,25 @@ class OrderController {
     }
   }
 
+  async deleteAllOrdersAndCustomers(req, res) {
+    try {
+      const result = await this.orderModel.deleteAllOrdersAndCustomers();
+      
+      if (result.success) {
+        res.json({ 
+          message: result.message,
+          deletedOrders: result.deletedOrders,
+          deletedCustomers: result.deletedCustomers
+        });
+      } else {
+        res.status(500).json({ error: 'Failed to delete orders and customers' });
+      }
+    } catch (error) {
+      console.error('Error in deleteAllOrdersAndCustomers controller:', error);
+      res.status(500).json({ error: 'Server error when deleting orders and customers' });
+    }
+  }
+
 
         async getOrderStats(req, res) {
           try {
@@ -92,16 +111,16 @@ class OrderController {
         async sendConfirmation(req, res) {
           const { email, name, orderId, orderItems, shippingDetails, totalPrice, discount, shippingCost, paymentMethod } = req.body;
         
-          // Ensure all values are valid numbers
+
           const validTotalPrice = !isNaN(totalPrice) && totalPrice !== null ? Number(totalPrice) : 0;
           const validDiscount = !isNaN(discount) && discount !== null ? Number(discount) : 0;
          
-          // Handle shipping cost which might be a string like "Ingyenes szállítás"
+
           let validShippingCost = 0;
           if (typeof shippingCost === 'number') {
             validShippingCost = !isNaN(shippingCost) ? shippingCost : 0;
           } else if (typeof shippingCost === 'string') {
-            // If it's a string like "1590 Ft", extract the number
+     
             const match = shippingCost.match(/\d+/);
             validShippingCost = match ? Number(match[0]) : 0;
           }
@@ -115,7 +134,7 @@ class OrderController {
             </tr>`
           ).join('')
         
-          // Calculate subtotal correctly
+      
           const subtotal = validTotalPrice - validShippingCost;
         
           const msg = {
@@ -169,6 +188,76 @@ class OrderController {
               error: 'Email sending failed',
               details: error.response?.body?.errors
             })
+          }
+        }
+
+        async getAllOrders(req, res) {
+          try {
+            const orders = await this.orderModel.getAllOrders();
+            res.json(orders);
+          } catch (error) {
+            console.error('Error in getAllOrders controller:', error);
+            res.status(500).json({ error: 'Server error when fetching orders' });
+          }
+        }
+        
+ 
+        async getCustomerById(req, res) {
+          try {
+            const customerId = req.params.id;
+            
+            if (!customerId) {
+              return res.status(400).json({ error: 'Customer ID is required' });
+            }
+            
+            const customer = await this.orderModel.getCustomerById(customerId);
+            
+            if (!customer) {
+              return res.status(404).json({ error: 'Customer not found' });
+            }
+            
+            res.json(customer);
+          } catch (error) {
+            console.error('Error in getCustomerById controller:', error);
+            res.status(500).json({ error: 'Server error when fetching customer' });
+          }
+        }
+        
+
+        async updateOrderStatus(req, res) {
+          try {
+            const orderId = req.params.id;
+            const { status } = req.body;
+            
+            if (!orderId) {
+              return res.status(400).json({ error: 'Order ID is required' });
+            }
+            
+            if (!status) {
+              return res.status(400).json({ error: 'Status is required' });
+            }
+            
+            const result = await this.orderModel.updateOrderStatus(orderId, status);
+            
+            if (!result.success) {
+              return res.status(404).json({ error: result.message });
+            }
+            
+            res.json({ message: result.message });
+          } catch (error) {
+            console.error('Error in updateOrderStatus controller:', error);
+            res.status(500).json({ error: 'Server error when updating order status' });
+          }
+        }
+        
+
+        async getOrderStatistics(req, res) {
+          try {
+            const stats = await this.orderModel.getOrderStats();
+            res.json(stats);
+          } catch (error) {
+            console.error('Error in getOrderStatistics controller:', error);
+            res.status(500).json({ error: 'Server error when fetching order statistics' });
           }
         }
 }
