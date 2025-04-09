@@ -16,7 +16,7 @@ class CartPage {
 
   async navigate() {
     await this.driver.get(this.url);
-    await this.driver.sleep(2000); // Wait for page to load
+    await this.driver.sleep(2000); 
     return this;
   }
 
@@ -43,7 +43,7 @@ class CartPage {
     const buttons = await this.driver.findElements(this.increaseQuantityButtons);
     if (buttons.length > index) {
       await buttons[index].click();
-      await this.driver.sleep(500); // Wait for UI update
+      await this.driver.sleep(500); 
     }
     return this;
   }
@@ -52,7 +52,7 @@ class CartPage {
     const buttons = await this.driver.findElements(this.decreaseQuantityButtons);
     if (buttons.length > index) {
       await buttons[index].click();
-      await this.driver.sleep(500); // Wait for UI update
+      await this.driver.sleep(500); 
     }
     return this;
   }
@@ -61,7 +61,7 @@ class CartPage {
     const buttons = await this.driver.findElements(this.removeItemButtons);
     if (buttons.length > index) {
       await buttons[index].click();
-      await this.driver.sleep(1000); // Wait for UI update
+      await this.driver.sleep(1000); 
     }
     return this;
   }
@@ -70,7 +70,7 @@ class CartPage {
     try {
       const element = await this.driver.findElement(this.totalPrice);
       const text = await element.getText();
-      // Extract the number from text like "Összesen: 12345 Ft"
+    
       const match = text.match(/\d+/);
       return match ? parseInt(match[0]) : 0;
     } catch (error) {
@@ -82,7 +82,7 @@ class CartPage {
   async proceedToCheckout() {
     try {
       await waitAndClick(this.driver, this.checkoutButton);
-      await this.driver.sleep(2000); // Wait for navigation
+      await this.driver.sleep(2000); 
       return true;
     } catch (error) {
       console.error('Error proceeding to checkout:', error);

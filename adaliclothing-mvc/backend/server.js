@@ -8,7 +8,7 @@ import mysql from 'mysql2/promise';
 import express from 'express';
 const app = express();
 
-// Create a connection pool instead of a single connection
+
 let pool;
 const initDb = async () => {
   try {
@@ -31,7 +31,7 @@ const initDb = async () => {
   }
 };
 
-// Update the getUserProfileImageByUsername function to use the pool
+
 async function getUserProfileImageByUsername(pool, username) {
   try {
     const [rows] = await pool.execute(
@@ -45,7 +45,7 @@ async function getUserProfileImageByUsername(pool, username) {
   }
 }
 
-// Update the saveUserProfileImageByUsername function to use the pool
+
 async function saveUserProfileImageByUsername(pool, username, imageData) {
   try {
     await pool.execute(
@@ -62,7 +62,7 @@ async function saveUserProfileImageByUsername(pool, username, imageData) {
 const startServer = async () => {
   const app = await initializeApp();
 
-  // Initialize the database pool
+ 
   pool = await initDb();
   const db = pool;
 
@@ -75,7 +75,7 @@ const startServer = async () => {
   app.use(express.json({ limit: '50mb' }));
   app.use(express.urlencoded({ extended: true, limit: '50mb' }));
   
-  // Update the profile image endpoints to use the pool and add error handling
+
   app.post('/profile-image', async (req, res) => {
     try {
       const { username, imageData } = req.body;
@@ -84,7 +84,7 @@ const startServer = async () => {
         return res.status(400).json({ success: false, message: 'Hiányzó adatok' });
       }
       
-      // Check if the pool is available
+     
       if (!pool) {
         console.error('Adatbázis kapcsolat nem elérhető');
         return res.status(500).json({ success: false, message: 'Adatbázis kapcsolat nem elérhető' });
@@ -99,7 +99,7 @@ const startServer = async () => {
     } catch (error) {
       console.error('Hiba a profilkép mentésekor:', error);
       
-      // Send a more detailed error response
+     
       res.status(500).json({ 
         success: false, 
         message: 'Szerver hiba a profilkép mentésekor',
@@ -112,7 +112,7 @@ const startServer = async () => {
     try {
       const { username } = req.params;
       
-      // Check if the pool is available
+   
       if (!pool) {
         console.error('Adatbázis kapcsolat nem elérhető');
         return res.status(500).json({ success: false, message: 'Adatbázis kapcsolat nem elérhető' });
@@ -145,7 +145,7 @@ const startServer = async () => {
     }
   }
   
-  // Add a health check endpoint
+
   app.get('/api/health', async (req, res) => {
     const dbConnected = await checkDatabaseConnection();
     
@@ -168,7 +168,7 @@ const startServer = async () => {
   const upload = multer({
     storage: storage,
     limits: {
-      fileSize: 10 * 1024 * 1024 // 10 MB (vagy bármilyen méret, amire szükséged van)
+      fileSize: 10 * 1024 * 1024 
     }
   });
   

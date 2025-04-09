@@ -6,7 +6,7 @@ const path = require('path');
 
 async function createDriver() {
   const options = new chrome.Options();
-  // options.addArguments('--headless'); // Headless mód, ha szükséges
+ 
   options.addArguments('--no-sandbox');
   options.addArguments('--disable-dev-shm-usage');
   
@@ -15,7 +15,7 @@ async function createDriver() {
     .setChromeOptions(options)
     .build();
   
-  // Ablak méretének beállítása
+ 
   await driver.manage().window().setRect({ width: 1280, height: 800 });
   
   return driver;
@@ -23,7 +23,7 @@ async function createDriver() {
 
 async function takeScreenshot(driver, filename) {
   try {
-    // Ellenőrizzük, hogy létezik-e a screenshots mappa
+    
     const screenshotsDir = path.join(__dirname, '..', 'screenshots');
     if (!fs.existsSync(screenshotsDir)) {
       fs.mkdirSync(screenshotsDir, { recursive: true });
@@ -38,11 +38,11 @@ async function takeScreenshot(driver, filename) {
   }
 }
 
-// Várakozás egy elem megjelenésére, majd kattintás rá
+
 async function waitAndClick(driver, locator, timeout = 10000) {
   const { until, By } = require('selenium-webdriver');
   
-  // Ha a locator string, akkor By.css-ként kezeljük
+ 
   if (typeof locator === 'string') {
     locator = By.css(locator);
   }
@@ -53,11 +53,11 @@ async function waitAndClick(driver, locator, timeout = 10000) {
   return element;
 }
 
-// Várakozás egy elem megjelenésére, majd szöveg beírása
+
 async function waitAndType(driver, locator, text, timeout = 10000) {
   const { until, By } = require('selenium-webdriver');
   
-  // Ha a locator string, akkor By.css-ként kezeljük
+  
   if (typeof locator === 'string') {
     locator = By.css(locator);
   }
@@ -69,11 +69,11 @@ async function waitAndType(driver, locator, text, timeout = 10000) {
   return element;
 }
 
-// Várakozás egy elem szövegére
+
 async function waitForText(driver, locator, text, timeout = 10000) {
   const { until, By } = require('selenium-webdriver');
   
-  // Ha a locator string, akkor By.css-ként kezeljük
+  
   if (typeof locator === 'string') {
     locator = By.css(locator);
   }

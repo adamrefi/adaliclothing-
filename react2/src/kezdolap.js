@@ -189,20 +189,19 @@ useEffect(() => {
   };
 
   useEffect(() => {
-    // Ellenőrizzük, hogy a felhasználó be van-e jelentkezve
+    
     const user = localStorage.getItem('user');
     if (user) {
       setIsLoggedIn(true);
       
-      // Lekérjük a frissített felhasználói adatokat, beleértve a kupon információkat is
+    
       fetchUserCoupons().then(coupons => {
         if (coupons && coupons.length > 0) {
-          // A kupon állapotok frissítése a komponensben
+        
           const activeCoupon = coupons.find(c => !c.isUsed && !c.isExpired);
           
           if (activeCoupon) {
-            // Ha van aktív kupon, frissítjük a megfelelő állapotokat
-            // (ha vannak ilyenek a kezdőlapon)
+           
           }
         }
       });
@@ -210,7 +209,7 @@ useEffect(() => {
       setIsLoggedIn(false);
     }
     
-    // Egyéb kezdőlap inicializálási kód...
+    
   }, []);
 
   const hideDialog = (dialogType) => {
@@ -284,11 +283,11 @@ useEffect(() => {
       
       const data = await response.json();
       
-      // Frissítjük a localStorage-ban tárolt felhasználói adatokat
+     
       if (data && Array.isArray(data)) {
-        // Regisztrációs kupon keresése
+       
         const regCoupon = data.find(c => c.type === 'registration' && !c.isUsed && !c.isExpired);
-        // Email kupon keresése
+      
         const emailCoupon = data.find(c => c.type === 'email' && !c.isUsed && !c.isExpired);
         
         if (regCoupon) {
@@ -347,7 +346,7 @@ useEffect(() => {
   const saveCouponToDatabase = async (coupon, couponCode) => {
     const userData = JSON.parse(localStorage.getItem('user'));
     try {
-      // Az új API végpont használata
+     
       const response = await fetch('http://localhost:5000/api/coupons/generate-registration', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -363,7 +362,7 @@ useEffect(() => {
       console.log("Backend válasz:", result);
       
       if (response.ok) {
-        // Frissítjük a localStorage-ben tárolt adatokat a kompatibilitás érdekében
+        
         userData.kupon = coupon;
         userData.kuponKod = couponCode;
         userData.kupon_hasznalva = false;

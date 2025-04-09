@@ -75,7 +75,7 @@ describe('Hitelesítési tesztek', function() {
   describe('Regisztráció tesztek', function() {
     it('Sikeres regisztráció új felhasználóval', async function() {
       try {
-        // Generálunk egy egyedi email címet a timestamp segítségével
+        
         const uniqueEmail = `test_${Date.now()}@example.com`;
         
         await registerPage.navigate();

@@ -24,23 +24,21 @@ const ShareProduct = ({ product, darkMode, source }) => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
 
-  // Ellenőrizzük, hogy a terméknek van-e kategoriaId tulajdonsága
-  // Ha van, akkor az oterm.js oldalról jön (eredeti termékek)
-  // Ha nincs, akkor a vinted.js oldalról jön (feltöltött termékek)
+ 
   const isOriginalProduct = product.hasOwnProperty('kategoriaId');
   
-  // Termék URL létrehozása a megfelelő elérési úttal
+ 
   const productUrl = window.location.origin + 
     (source === 'oterm' ? `/termek/${product.id}` : `/product/${product.id}`);
   
   
-  // Termék neve és ára a megosztáshoz
+  
   const productTitle = product.nev || 'Adali Clothing termék';
   const productPrice = product.ar ? `${product.ar} Ft` : '';
   const shareText = `Nézd meg ezt a terméket: ${productTitle} - ${productPrice}`;
 
   const handleShareClick = (event) => {
-    // Megakadályozzuk az esemény buborékolását és az alapértelmezett viselkedést
+    
     if (event) {
       event.stopPropagation();
       event.preventDefault();
@@ -51,7 +49,7 @@ const ShareProduct = ({ product, darkMode, source }) => {
   };
 
   const handleClose = (event) => {
-    // Megakadályozzuk az esemény buborékolását
+    
     if (event) {
       event.stopPropagation();
       event.preventDefault();
@@ -129,14 +127,14 @@ const ShareProduct = ({ product, darkMode, source }) => {
       event.nativeEvent.stopImmediatePropagation();
     }
     
-    // Gmail link a mailto: helyett
+   
     const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=&su=${encodeURIComponent('Nézd meg ezt a terméket az Adali Clothing oldalán!')}&body=${encodeURIComponent(shareText + '\n\n' + productUrl)}`;
     
     window.open(gmailUrl, '_blank');
     handleClose();
   };
 
-  // Megosztási opciók adatai
+
   const shareOptions = [
     { 
       name: 'Facebook', 

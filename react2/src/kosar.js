@@ -1133,7 +1133,7 @@ export default function Kosar() {
       backdropFilter: 'blur(4px)'
     }}
     onClick={(e) => {
-      // Close when clicking outside the card
+     
       if (e.target === e.currentTarget) {
         setDeleteAlert(false);
       }
@@ -1406,7 +1406,7 @@ export default function Kosar() {
           </Box>
         )}
 
-        {/* Logout Confirmation Dialog */}
+     
         {showLogoutAlert && (
           <Box
             sx={{
@@ -1423,7 +1423,7 @@ export default function Kosar() {
               padding: { xs: '16px', sm: 0 },
             }}
             onClick={(e) => {
-              // Close when clicking outside the card
+           
               if (e.target === e.currentTarget) {
                 setShowLogoutAlert(false);
               }
@@ -1613,7 +1613,7 @@ export default function Kosar() {
           </Box>
         )}
 
-        {/* Inactivity Alert */}
+        
         <InactivityAlert darkMode={darkMode} inactivityTimeout={120000} />
       </Container>
     </div>

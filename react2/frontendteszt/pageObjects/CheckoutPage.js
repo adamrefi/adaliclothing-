@@ -19,7 +19,7 @@ class CheckoutPage {
 
   async navigate() {
     await this.driver.get(this.url);
-    await this.driver.sleep(2000); // Wait for page to load
+    await this.driver.sleep(2000);
     return this;
   }
 
@@ -37,7 +37,7 @@ class CheckoutPage {
     try {
       const paymentMethods = await this.driver.findElements(this.paymentMethodRadios);
       
-      // Find the right payment method radio button
+   
       for (const radio of paymentMethods) {
         const value = await radio.getAttribute('value');
         if (value === method) {
@@ -56,7 +56,7 @@ class CheckoutPage {
   async placeOrder() {
     try {
       await waitAndClick(this.driver, this.placeOrderButton);
-      await this.driver.sleep(3000); // Wait for order processing
+      await this.driver.sleep(3000); 
       return true;
     } catch (error) {
       console.error('Error placing order:', error);
@@ -78,7 +78,7 @@ class CheckoutPage {
     try {
       const element = await this.driver.findElement(this.orderSummary);
       const text = await element.getText();
-      // Extract the number from text like "Összesen: 12345 Ft"
+    
       const match = text.match(/\d+/);
       return match ? parseInt(match[0]) : 0;
     } catch (error) {

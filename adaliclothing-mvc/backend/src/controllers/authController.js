@@ -9,31 +9,31 @@ class AuthController {
     const { name, email, password } = req.body;
     
     try {
-      // Ellenőrizzük, hogy az email már regisztrálva van-e
+     
       const existingEmail = await this.userModel.findByEmail(email);
       if (existingEmail) {
         return res.status(400).json({ error: 'Ez az email már regisztrálva van a rendszerben.' });
       }
       
-      // Ellenőrizzük, hogy a felhasználónév már foglalt-e
+      
       const existingUsername = await this.userModel.findByUsername(name);
       if (existingUsername) {
         return res.status(400).json({ error: 'Ez a felhasználónév már foglalt.' });
       }
       
-      // Ellenőrizzük az email formátumát
+    
       if (email.split('@').length !== 2) {
         return res.status(400).json({ error: 'Az email cím formátuma nem megfelelő!' });
       }
       
-      // Ellenőrizzük a jelszó erősségét
+      
       if (password.length < 6 || !/[A-Z]/.test(password)) {
         return res.status(400).json({ error: 'A jelszónak legalább 6 karakterből kell állnia és tartalmaznia kell legalább egy nagybetűt!' })
       }
   
       const user = await this.userModel.create({ name, email, password })
   
-      // Sikeres regisztráció email küldése
+      
       const msg = {
         to: email,
         from: {

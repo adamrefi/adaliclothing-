@@ -30,9 +30,10 @@ import {
   MenuList,
   Badge
 } from '@mui/material';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import CloseIcon from '@mui/icons-material/Close';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import InfoIcon from '@mui/icons-material/Info';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
 import StyleIcon from '@mui/icons-material/Style';
@@ -75,12 +76,12 @@ const PersonalStyleAdvisor = () => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState('');
-  const [cameraActive, setCameraActive] = useState(false);
+ 
   const [snackbar, setSnackbar] = useState({ open: false, message: '', severity: 'info' });
   const [infoDialogOpen, setInfoDialogOpen] = useState(false);
   const [resultDialogOpen, setResultDialogOpen] = useState(false);
-  const videoRef = useRef(null);
-  const canvasRef = useRef(null);
+
+ 
    const isExtraSmall = useMediaQuery('(max-width:400px)');
   const fileInputRef = useRef(null);
   const [sideMenuActive, setSideMenuActive] = useState(false);
@@ -92,7 +93,7 @@ const PersonalStyleAdvisor = () => {
   const [userName, setUserName] = useState('');
   const [showLogoutAlert, setShowLogoutAlert] = useState(false);
 
-  // Sötét mód beállítása a localStorage alapján
+ 
   useEffect(() => {
     const savedDarkMode = localStorage.getItem('darkMode');
     if (savedDarkMode !== null) {
@@ -100,7 +101,7 @@ const PersonalStyleAdvisor = () => {
     }
   }, []);
 
-  // Bejelentkezési állapot ellenőrzése
+ 
   useEffect(() => {
     const checkLoginStatus = () => {
       const userData = localStorage.getItem('user');
@@ -113,7 +114,7 @@ const PersonalStyleAdvisor = () => {
     checkLoginStatus();
   }, []);
 
-  // Oldalsó menü kezelése
+
   useEffect(() => {
     if (sideMenuActive) {
       document.body.style.overflow = 'hidden';
@@ -122,14 +123,14 @@ const PersonalStyleAdvisor = () => {
     }
   }, [sideMenuActive]);
 
-  // Első betöltéskor mutassunk egy rövid útmutatót
+ 
   useEffect(() => {
     setTimeout(() => {
       setInfoDialogOpen(true);
     }, 500);
   }, []);
 
-  // Fejléc függvények
+ 
   const toggleSideMenu = () => {
     setSideMenuActive((prev) => !prev);
   };
@@ -170,7 +171,7 @@ const PersonalStyleAdvisor = () => {
     navigate('/kosar');
   };
 
-  // Fájl kiválasztása
+ 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -188,10 +189,8 @@ const PersonalStyleAdvisor = () => {
       setResult(null);
       setError('');
       
-      // Ha a kamera aktív, leállítjuk
-      if (cameraActive) {
-        stopCamera();
-      }
+      
+    
       
       setSnackbar({
         open: true,
@@ -201,155 +200,67 @@ const PersonalStyleAdvisor = () => {
     }
   };
 
-  // Kamera indítása
-  const startCamera = async () => {
-    try {
-      setCameraActive(true);
-      setSelectedFile(null);
-      setPreviewUrl('');
-      setResult(null);
-      setError('');
-      
-      const stream = await navigator.mediaDevices.getUserMedia({ 
-        video: { facingMode: 'environment' } 
-      });
-      
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-      }
-      
-      setSnackbar({
-        open: true,
-        message: 'Kamera aktiválva. Készíts egy képet!',
-        severity: 'info'
-      });
-    } catch (err) {
-      console.error('Kamera hiba:', err);
-      setError('Nem sikerült hozzáférni a kamerához: ' + err.message);
-      setCameraActive(false);
-      
-      setSnackbar({
-        open: true,
-        message: 'Nem sikerült hozzáférni a kamerához',
-        severity: 'error'
-      });
-    }
-  };
+ 
 
-  // Kamera leállítása
-  const stopCamera = () => {
-    if (videoRef.current && videoRef.current.srcObject) {
-      const tracks = videoRef.current.srcObject.getTracks();
-      tracks.forEach(track => track.stop());
-      videoRef.current.srcObject = null;
-    }
-    setCameraActive(false);
-  };
 
-  // Kép készítése a kamerával
-  const captureImage = () => {
-    if (!videoRef.current || !canvasRef.current) return;
+const analyzeImage = async () => {
+  console.log('Kép elemzése kezdődik a frontend oldalon...');
+  
+  if (!selectedFile) {
+    setSnackbar({
+      open: true,
+      message: 'Kérlek válassz ki egy képet',
+      severity: 'warning'
+    });
+    return;
+  }
+  
+  setLoading(true);
+  setError('');
+  
+  try {
+    console.log('Fájl feltöltése:', selectedFile.name);
+    const formData = new FormData();
+    formData.append('image', selectedFile);
+
+    const response = await fetch('http://localhost:5000/api/style/analyze-person', {
+      method: 'POST',
+      body: formData
+    });
     
-    const video = videoRef.current;
-    const canvas = canvasRef.current;
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Hiba történt a kép elemzése során');
+    }
     
-    // Canvas méretének beállítása a videó méretére
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    
-    // Kép rajzolása a canvas-ra
-    const context = canvas.getContext('2d');
-    context.drawImage(video, 0, 0, canvas.width, canvas.height);
-    
-    // Canvas konvertálása base64 képpé
-    const imageDataUrl = canvas.toDataURL('image/jpeg');
-    setPreviewUrl(imageDataUrl);
-    
-    // Kamera leállítása
-    stopCamera();
-    
-    // Eredmények törlése
-    setResult(null);
+    const data = await response.json();
+    console.log('API válasz:', data);
+  
+    setResult(data);
     
     setSnackbar({
       open: true,
-      message: 'Kép sikeresen elkészítve!',
+      message: 'Stíluselemzés sikeresen elkészült!',
       severity: 'success'
     });
-  };
+    
+   
+    setResultDialogOpen(true);
+  } catch (err) {
+    console.error('Elemzési hiba:', err);
+    setError(err.message || 'Hiba történt a kép elemzése során');
+    
+    setSnackbar({
+      open: true,
+      message: err.message || 'Hiba történt a kép elemzése során',
+      severity: 'error'
+    });
+  } finally {
+    setLoading(false);
+  }
+};
 
-  // Kép elemzése
-  const analyzeImage = async () => {
-    console.log('Kép elemzése kezdődik a frontend oldalon...');
-    
-    if (!selectedFile && !previewUrl) {
-      setSnackbar({
-        open: true,
-        message: 'Kérlek válassz ki vagy készíts egy képet',
-        severity: 'warning'
-      });
-      return;
-    }
-    
-    setLoading(true);
-    setError('');
-    
-    try {
-      let response;
-      
-      if (selectedFile) {
-        console.log('Fájl feltöltése:', selectedFile.name);
-        const formData = new FormData();
-formData.append('image', selectedFile);
-
-response = await fetch('http://localhost:5000/api/style/analyze-person', {
-  method: 'POST',
-  body: formData
-});
-      } else if (previewUrl) {
-        console.log('Base64 kép küldése');
-        response = await fetch('http://localhost:5000/api/style/analyze-base64', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({ image: previewUrl })
-        });
-      }
-      
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Hiba történt a kép elemzése során');
-      }
-      
-      const data = await response.json();
-      console.log('API válasz:', data);
-    
-      setResult(data);
-      
-      setSnackbar({
-        open: true,
-        message: 'Stíluselemzés sikeresen elkészült!',
-        severity: 'success'
-      });
-      
-      // Nyissuk meg az eredmény dialógust
-      setResultDialogOpen(true);
-    } catch (err) {
-      console.error('Elemzési hiba:', err);
-      setError(err.message || 'Hiba történt a kép elemzése során');
-      
-      setSnackbar({
-        open: true,
-        message: err.message || 'Hiba történt a kép elemzése során',
-        severity: 'error'
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Új kép választása
+ 
   const handleNewImage = () => {
     setSelectedFile(null);
     setPreviewUrl('');
@@ -361,7 +272,7 @@ response = await fetch('http://localhost:5000/api/style/analyze-person', {
     }
   };
 
-  // Snackbar bezárása
+
   const handleCloseSnackbar = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -369,7 +280,7 @@ response = await fetch('http://localhost:5000/api/style/analyze-person', {
     setSnackbar({ ...snackbar, open: false });
   };
 
-  // Fő háttérszín és szövegszín a sötét/világos mód alapján
+ 
   const mainBgColor = darkMode ? '#121212' : '#f5f5f5';
   const mainTextColor = darkMode ? '#ffffff' : '#333333';
   const primaryColor = darkMode ? '#90caf9' : '#1976d2';
@@ -414,7 +325,7 @@ response = await fetch('http://localhost:5000/api/style/analyze-person', {
     }
   };
   
-  // Aktuális színséma kiválasztása
+  
   const currentColors = darkMode ? colors.dark : colors.light;
   return (
     <div style={{
@@ -838,107 +749,50 @@ response = await fetch('http://localhost:5000/api/style/analyze-person', {
                     Kép feltöltése vagy készítése
                   </Typography>
 
-                  {!cameraActive && !previewUrl && (
-                    <Box 
-                      sx={{ 
-                        border: '2px dashed',
-                        borderColor: darkMode ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)',
-                        borderRadius: 2,
-                        p: 4,
-                        textAlign: 'center',
-                        mb: 3,
-                        backgroundColor: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)',
-                        transition: 'all 0.3s ease',
-                        '&:hover': {
-                          borderColor: primaryColor,
-                          backgroundColor: darkMode ? 'rgba(144, 202, 249, 0.1)' : 'rgba(25, 118, 210, 0.05)'
-                        }
-                      }}
-                    >
-                      <Input
-                        ref={fileInputRef}
-                        accept="image/*"
-                        id="contained-button-file"
-                        type="file"
-                        onChange={handleFileChange}
-                      />
-                      <label htmlFor="contained-button-file">
-                        <Button
-                          variant="contained"
-                          component="span"
-                          startIcon={<CloudUploadIcon />}
-                          sx={{ 
-                            mb: 2,
-                            backgroundColor: primaryColor,
-                            '&:hover': {
-                              backgroundColor: darkMode ? '#42a5f5' : '#115293'
-                            }
-                          }}
-                        >
-                          Kép feltöltése
-                        </Button>
-                      </label>
-                      <Typography variant="body2" sx={{ color: darkMode ? '#aaa' : '#666' }}>
-                        vagy
-                      </Typography>
-                      <Button
-                        variant="outlined"
-                        onClick={startCamera}
-                        startIcon={<PhotoCameraIcon />}
-                        sx={{ 
-                          mt: 2,
-                          borderColor: primaryColor,
-                          color: primaryColor,
-                          '&:hover': {
-                            borderColor: darkMode ? '#42a5f5' : '#115293',
-                            backgroundColor: darkMode ? 'rgba(144, 202, 249, 0.1)' : 'rgba(25, 118, 210, 0.05)'
-                          }
-                        }}
-                      >
-                        Kamera használata
-                      </Button>
-                    </Box>
-                  )}
+                  {!previewUrl && (
+  <Box
+    sx={{
+      border: '2px dashed',
+      borderColor: darkMode ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)',
+      borderRadius: 2,
+      p: 4,
+      textAlign: 'center',
+      mb: 3,
+      backgroundColor: darkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)',
+      transition: 'all 0.3s ease',
+      '&:hover': {
+        borderColor: primaryColor,
+        backgroundColor: darkMode ? 'rgba(144, 202, 249, 0.1)' : 'rgba(25, 118, 210, 0.05)'
+      }
+    }}
+  >
+    <Input
+      ref={fileInputRef}
+      accept="image/*"
+      id="contained-button-file"
+      type="file"
+      onChange={handleFileChange}
+    />
+    <label htmlFor="contained-button-file">
+      <Button
+        variant="contained"
+        component="span"
+        startIcon={<CloudUploadIcon />}
+        sx={{
+          mb: 2,
+          backgroundColor: primaryColor,
+          '&:hover': {
+            backgroundColor: darkMode ? '#42a5f5' : '#115293'
+          }
+        }}
+      >
+        Kép feltöltése
+      </Button>
+    </label>
+  </Box>
+)}
 
-                  {cameraActive && (
-                    <Box sx={{ textAlign: 'center', mb: 3 }}>
-                      <video
-                        ref={videoRef}
-                        autoPlay
-                        playsInline
-                        style={{ 
-                          width: '100%', 
-                          maxHeight: 400, 
-                          borderRadius: 8,
-                          boxShadow: darkMode ? '0 4px 12px rgba(0,0,0,0.4)' : '0 4px 12px rgba(0,0,0,0.1)'
-                        }}
-                      />
-                      <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center', gap: 2 }}>
-                        <Button
-                          variant="contained"
-                          onClick={captureImage}
-                          startIcon={<PhotoCameraIcon />}
-                          sx={{ 
-                            backgroundColor: '#4caf50',
-                            '&:hover': {
-                              backgroundColor: '#388e3c'
-                            }
-                          }}
-                        >
-                          Kép készítése
-                        </Button>
-                        <Button
-                          variant="outlined"
-                          onClick={stopCamera}
-                          color="error"
-                        >
-                          Mégse
-                        </Button>
-                      </Box>
-                      <canvas ref={canvasRef} style={{ display: 'none' }} />
-                    </Box>
-                  )}
-
+                 
                   {previewUrl && (
                     <Box sx={{ textAlign: 'center', mb: 3 }}>
                       <Box

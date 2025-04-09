@@ -56,7 +56,7 @@ const UploaderRatingBadge = ({ username, darkMode, onClick }) => {
     try {
       setLoading(true);
       console.log(`Értékelések lekérése: ${userId}`);
-      // Módosítsd az URL-t, hogy az új végpontot használja
+   
       const response = await fetch(`http://localhost:5000/ratings/user-ratings/${userId}`);
       
       if (!response.ok) {

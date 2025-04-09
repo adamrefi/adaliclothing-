@@ -79,7 +79,7 @@ export default function Fadmin() {
     totalDiscount: 0
   });
 
-  // Összes felhasználó kiválasztása/kiválasztás törlése
+ 
   const handleSelectAllUsers = () => {
     if (selectedUsers.length === users.length) {
       setSelectedUsers([]);
@@ -88,7 +88,7 @@ export default function Fadmin() {
     }
   };
 
-  // Egy felhasználó kiválasztása/kiválasztás törlése
+ 
   const handleSelectUser = (userId) => {
     if (selectedUsers.includes(userId)) {
       setSelectedUsers(selectedUsers.filter(id => id !== userId));
@@ -97,7 +97,7 @@ export default function Fadmin() {
     }
   };
 
-  // Kupon küldési dialógus megnyitása
+ 
   const handleOpenCouponDialog = () => {
     if (selectedUsers.length === 0) {
       setSnackbarMessage('Válassz ki legalább egy felhasználót!');
@@ -108,12 +108,12 @@ export default function Fadmin() {
     setCouponDialogOpen(true);
   };
 
-  // Kupon küldési dialógus bezárása
+
   const handleCloseCouponDialog = () => {
     setCouponDialogOpen(false);
   };
 
-  // Kuponok küldése a kiválasztott felhasználóknak
+  
   const handleSendSelectedCoupons = async () => {
     setIsSendingCoupons(true);
     setCouponResult(null);
@@ -142,7 +142,7 @@ export default function Fadmin() {
         setSnackbarOpen(true);
         setSelectedUsers([]);
         
-        // Frissítsük a kupon statisztikákat
+        
         fetchCouponStats();
         fetchCouponHistory();
       } else {
@@ -169,12 +169,12 @@ export default function Fadmin() {
     }
   };
 
-  // Kuponok küldése minden felhasználónak
+ 
   const handleSendCoupons = () => {
     setAllCouponDialogOpen(true);
   };
   
-  // Kuponok küldése minden felhasználónak a dialógus megerősítése után
+  
   const handleSendAllCoupons = async () => {
     setIsSendingCoupons(true);
     setCouponResult(null);
@@ -202,7 +202,7 @@ export default function Fadmin() {
         setSnackbarSeverity('success');
         setSnackbarOpen(true);
         
-        // Frissítsük a kupon statisztikákat
+        
         fetchCouponStats();
         fetchCouponHistory();
       } else {
@@ -229,7 +229,7 @@ export default function Fadmin() {
     }
   };
 
-  // Kupon statisztikák lekérése
+  
   const fetchCouponStats = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/coupons/stats');
@@ -243,7 +243,7 @@ export default function Fadmin() {
     }
   };
 
-  // Kupon történet lekérése
+ 
   const fetchCouponHistory = async () => {
     setIsLoadingHistory(true);
     try {
@@ -266,7 +266,7 @@ export default function Fadmin() {
         const response = await fetch('http://localhost:5000/users');
         const data = await response.json();
         
-        // Lekérjük minden felhasználó kupon információit
+        
         const usersWithCoupons = await Promise.all(data.map(async (user) => {
           try {
             const couponResponse = await fetch(`http://localhost:5000/api/coupons/user-coupons/${user.f_azonosito}`);
@@ -274,10 +274,10 @@ export default function Fadmin() {
             if (couponResponse.ok) {
               const coupons = await couponResponse.json();
               
-              // Aktív kupon keresése
+              
               const activeCoupon = coupons.find(coupon => !coupon.isUsed && !coupon.isExpired);
               
-              // Használt kuponok száma
+              
               const usedCouponsCount = coupons.filter(coupon => coupon.isUsed).length;
               
               return {
@@ -318,7 +318,7 @@ export default function Fadmin() {
       
         if (response.ok) {
           setUsers(users.filter(user => user.f_azonosito !== userId));
-          // Ha a törölt felhasználó ki volt választva, távolítsuk el a kiválasztottak közül
+          
           if (selectedUsers.includes(userId)) {
             setSelectedUsers(selectedUsers.filter(id => id !== userId));
           }
