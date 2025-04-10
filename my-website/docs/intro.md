@@ -159,3 +159,33 @@ Az usertermekek tábla feltolto mezője a user tábla felhasznalonev mezőjére 
 
 Ezek a kapcsolatok együttesen biztosítják, hogy az adatbázisunk konzisztens maradjon, miközben hatékonyan támogatja a webshop összes funkcióját. A megfelelően kialakított idegen kulcsok és a CASCADE szabályok segítenek az adatintegritás megőrzésében, még a komplex műveletek során is.
 
+## Reflexió az Adali Clothing webáruház projektről
+
+Az Adali Clothing webáruház projekt egy átfogó e-kereskedelmi megoldás, amely modern technológiák felhasználásával biztosít teljes értékű online vásárlási élményt. A projekt elemzése során számos erősséget és néhány fejlesztési lehetőséget azonosítottam.
+
+### Technológiai megvalósítás
+
+A projekt technológiai szempontból jól strukturált, modern megközelítést alkalmaz:
+
+- **Backend**: Node.js és Express.js alapú API szerver, amely MVC architektúrát követ, MySQL adatbázissal
+- **Frontend**: React.js alapú felhasználói felület, Material UI komponenskönyvtárral
+- **Tesztelés**: Átfogó tesztelési stratégia mind a backend (Jest), mind a frontend (Mocha, Selenium) oldalon
+- **Integráció**: Külső szolgáltatások integrációja (Google Cloud Vision API, SendGrid)
+
+A kódbázis jól szervezett, moduláris felépítésű, ami megkönnyíti a karbantartást és a továbbfejlesztést. A frontend komponensek logikus struktúrát követnek, a backend pedig tiszta API végpontokat biztosít.
+
+### Funkcionális gazdagság
+
+A webáruház funkcionalitása kiemelkedő:
+
+- Teljes értékű felhasználói regisztráció és bejelentkezés
+- Termékek böngészése, szűrése és részletes megtekintése
+- Kosárkezelés és rendelési folyamat
+- Felhasználói értékelések és visszajelzések
+- Kuponrendszer és kedvezmények
+- Felhasználói termékfeltöltés (Vinted-szerű funkció)
+- Adminisztrációs felület a termékek, felhasználók és rendelések kezeléséhez
+- Sötét/világos mód támogatás
+- Reszponzív design különböző eszközökhöz
+
+Különösen innovatív megoldásnak tartom a Google Cloud Vision API integrációját, amely mesterséges intelligencia segítségével elemzi a feltöltött termékképeket, valamint a stílustanácsadó funkciót.

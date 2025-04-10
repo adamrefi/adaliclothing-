@@ -13,11 +13,11 @@ let pool;
 const initDb = async () => {
   try {
     pool = mysql.createPool({
-      host: 'localhost',
-      port: 3307,
-      user: 'webshoppp',
-      password: 'Premo900',
-      database: 'webshoppp',
+      host: process.env.DB_HOST || 'localhost',
+      port: process.env.DB_PORT || 3307,
+      user: process.env.DB_USER || 'webshoppp',
+      password: process.env.DB_PASSWORD || 'Premo900',
+      database: process.env.DB_NAME || 'webshoppp',
       waitForConnections: true,
       connectionLimit: 10,
       queueLimit: 0
@@ -30,7 +30,6 @@ const initDb = async () => {
     return null;
   }
 };
-
 
 async function getUserProfileImageByUsername(pool, username) {
   try {
