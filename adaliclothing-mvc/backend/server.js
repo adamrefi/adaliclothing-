@@ -13,7 +13,7 @@ let pool;
 const initDb = async () => {
   try {
     pool = mysql.createPool({
-      host: process.env.DB_HOST || 'localhost',
+      host: process.env.DB_HOST || 'MySQL',
       port: process.env.DB_PORT || 3307,
       user: process.env.DB_USER || 'webshoppp',
       password: process.env.DB_PASSWORD || 'Premo900',
