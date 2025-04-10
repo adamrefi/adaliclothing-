@@ -1,108 +1,68 @@
 # ADALICLOTHING
-_Elevate Your Style, Empower Your Confidence._
+_Emeld fel a stílusod, erősítsd meg az önbizalmad._
 
-[![Last Commit](https://img.shields.io/github/last-commit/adamiwcfb/adaliclothing?style=flat)](https://github.com/adamiwcfb/adaliclothing)
-[![Languages](https://img.shields.io/github/languages/count/adamiwcfb/adaliclothing)](https://github.com/adamiwcfb/adaliclothing)
-[![Top Language](https://img.shields.io/github/languages/top/adamiwcfb/adaliclothing)](https://github.com/adamiwcfb/adaliclothing)
+**Fejlesztve a következő eszközökkel és technológiákkal:**
 
-**Built with the tools and technologies:**
+------
 
-![Tech Stack](https://img.shields.io/badge/JavaScript-yellow?style=flat&logo=javascript)
-![Node.js](https://img.shields.io/badge/Node.js-green?style=flat&logo=nodedotjs)
-![React](https://img.shields.io/badge/React-blue?style=flat&logo=react)
-![Docker](https://img.shields.io/badge/Docker-blue?style=flat&logo=docker)
-![MySQL](https://img.shields.io/badge/MySQL-blue?style=flat&logo=mysql)
-![CSS3](https://img.shields.io/badge/CSS3-blue?style=flat&logo=css3)
-![Styled Components](https://img.shields.io/badge/styled--components-pink?style=flat)
-![JWT](https://img.shields.io/badge/JWT-red?style=flat)
-![Material UI](https://img.shields.io/badge/Material--UI-blue?style=flat&logo=mui)
+## 📝 Áttekintés
+Az Adali Clothing egy átfogó fejlesztői eszköz, amely az e-kereskedelmi alkalmazások létrehozását és kezelését egyszerűsíti, biztosítva a robusztus és skálázható architektúrát.
 
----
+### Miért az Adali Clothing?
+Ez a projekt egyszerűsíti a fejlesztési folyamatot azáltal, hogy olyan alapvető funkciókat biztosít, amelyek növelik a produktivitást és a megbízhatóságot. A főbb jellemzők közé tartoznak:
 
-## 📚 Table of Contents
-- [Overview](#overview)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Testing](#testing)
+- ✅ **Adatbázis inicializálás**: Gyorsan beállíthatja az adatbázis sémáját SQL dump-okkal a konzisztens környezetek érdekében.
+- 🐳 **Docker támogatás**: Könnyen kezelhetők a több konténeres alkalmazások, egyszerűsítve a telepítést és fejlesztést.
+- 🧪 **Automatizált tesztelés**: Biztosítja a megbízhatóságot átfogó tesztekkel mind a frontend, mind a backend funkcionalitásokhoz.
+- 📱 **Reszponzív dizájn**: A Material-UI használatával modern, felhasználóbarát felületet biztosít, amely zökkenőmentesen alkalmazkodik a különböző eszközökhöz.
+- 🔐 **Felhasználói hitelesítés**: Robusztus hitelesítési rendszert implementál a biztonság és a felhasználói élmény növelése érdekében.
 
 ---
 
-## 📝 Overview
-Adali Clothing is a comprehensive developer tool designed to streamline the creation and management of e-commerce applications, ensuring a robust and scalable architecture.
+## 🚀 Kezdeti lépések
 
-### Why Adali Clothing?
-This project simplifies the development process by providing essential features that enhance productivity and reliability. The core features include:
-
-- ✅ **Database Initialization**: Quickly set up your database schema with SQL dumps for consistent environments.
-- 🐳 **Docker Support**: Easily orchestrate multi-container applications, simplifying deployment and development.
-- 🧪 **Automated Testing**: Ensure reliability with comprehensive test coverage for both frontend and backend functionalities.
-- 📱 **Responsive Design**: Leverage Material-UI for a modern, user-friendly interface that adapts seamlessly to various devices.
-- 🔐 **User Authentication**: Implement a robust authentication system to enhance security and user engagement.
+### Előfeltételek
+A projekthez a következő függőségek szükségesek:
+- **Programozási nyelv**: JavaScript
+- **Csomagkezelő**: Npm
+- **Konténer futtatókörnyezet**: Docker
 
 ---
 
-## 🚀 Getting Started
+### Telepítés
+Építse fel az AdaliClothing-ot a forrásból és telepítse a függőségeket:
 
-### Prerequisites
-This project requires the following dependencies:
-- **Programming Language**: JavaScript
-- **Package Manager**: Npm
-- **Container Runtime**: Docker
-
----
-
-### Installation
-Build AdaliClothing from the source and install dependencies:
-
-1. **Clone the repository:**
+1. **Klónozza a repository-t:**
    ```bash
    git clone https://github.com/adamiwcfb/adaliclothing
    ```
 
-2. **Navigate to the project directory:**
+2. **Navigáljon a projekt könyvtárába:**
    ```bash
    cd adaliclothing
    ```
 
-3. **Install dependencies:**
+3. **Telepítse a függőségeket:**
    ```bash
    npm install
    ```
 
-4. **Start the development server:**
+4. **Indítsa el a fejlesztői szervert:**
    ```bash
    npm start
    ```
 
-## Usage
-After installation, you can access the application at http://localhost:3000
+## Használat
+A telepítés után az alkalmazás elérhető a http://localhost:3000 címen
 
-## Testing
-Run the automated tests to ensure everything is working correctly:
+## Tesztelés
+Futtassa az automatizált teszteket, hogy megbizonyosodjon arról, hogy minden megfelelően működik:
 
 ```bash
 npm test
 ```
 
-## Documentation
-For more detailed documentation, visit our [Docusaurus site](https://your-docusaurus-site-url.com)
-```
+## Dokumentáció
+Részletesebb dokumentációért látogasson el a [Docusaurus oldalunkra](https://adaliclothing.vercel.app)
 
-Now, to add a link from your Docusaurus site to your GitHub repository, add the following to your `intro.md` file:
 
-```markdown:my-website\docs\intro.md
-- **Gmail**: A Google által fejlesztett és üzemeltetett ingyenes e-mail szolgáltatás. Kiemelkedik a nagy tárhelyével, hatékony spamszűrőjével és a Google szolgáltatásokkal való szoros integrációjával.
-
-- **Messenger**: A Meta (Facebook) üzenetküldő alkalmazása, amely lehetővé teszi a felhasználók számára a szöveges üzenetek küldését, videóhívásokat, hangüzeneteket és egyéb interaktív funkciók használatát.
-
-- **Moodle**: Egy nyílt forráskódú tanulásmenedzsment rendszer (LMS), amelyet oktatási intézmények és vállalatok használnak online kurzusok kezelésére. Lehetővé teszi tananyagok megosztását, tesztek készítését és diákok nyomon követését.
-
-## Projektek
-
-### [AdaliClothing](https://github.com/adamiwcfb/adaliclothing)
-
-AdaliClothing egy átfogó e-kereskedelmi alkalmazás, amely modern technológiákat használ a fejlesztés egyszerűsítésére és a megbízhatóság növelésére. [Látogasd meg a GitHub repót](https://github.com/adamiwcfb/adaliclothing) a teljes dokumentációért és forráskódért.
-
-## Adatbázis modell
