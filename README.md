@@ -30,25 +30,34 @@ A projekthez a következő függőségek szükségesek:
 ---
 
 ### Telepítés
-Építse fel az AdaliClothing-ot a forrásból és telepítse a függőségeket:
+A projekt két fő részből áll: backend (adaliclothing-mvc) és frontend (react2). Mindkettőt külön kell telepíteni:
 
 1. **Klónozza a repository-t:**
    ```bash
-   git clone https://github.com/adamiwcfb/adaliclothing
+   git clone https://github.com/adamrefi/adaliclothing-
    ```
 
-2. **Navigáljon a projekt könyvtárába:**
+2. **Backend telepítése:**
    ```bash
-   cd adaliclothing
-   ```
-
-3. **Telepítse a függőségeket:**
-   ```bash
+   cd adaliclothing/adaliclothing-mvc/backend
    npm install
    ```
 
-4. **Indítsa el a fejlesztői szervert:**
+3. **Frontend telepítése:**
    ```bash
+   cd /adaliclothing-/react2
+   npm install
+   ```
+
+4. **Backend szerver indítása:**
+   ```bash
+   cd /adaliclothing-/adaliclothing-mvc/backend
+   node server.js
+   ```
+
+5. **Frontend fejlesztői szerver indítása (új terminál ablakban):**
+   ```bash
+   cd /adaliclothing-/react2/src
    npm start
    ```
 
@@ -59,10 +68,14 @@ A telepítés után az alkalmazás elérhető a http://localhost:3000 címen
 Futtassa az automatizált teszteket, hogy megbizonyosodjon arról, hogy minden megfelelően működik:
 
 ```bash
+# Backend tesztek futtatása
+cd adaliclothing-mvc/backend/test
+npm test
+
+# Frontend tesztek futtatása
+cd /adaliclothing-/react2/frontendteszt
 npm test
 ```
 
 ## Dokumentáció
-Részletesebb dokumentációért látogasson el a [Docusaurus oldalunkra](https://adaliclothing.vercel.app)
-
-
+Részletesebb dokumentációért látogasson el a [Docusaurus oldalunkra](https://Adalidoco.vercel.app)
