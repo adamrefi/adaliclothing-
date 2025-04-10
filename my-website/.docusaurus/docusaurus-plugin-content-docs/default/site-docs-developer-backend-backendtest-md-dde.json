@@ -1,0 +1,27 @@
+{
+  "id": "developer/backend/backendtest",
+  "title": "Backend tesztelés",
+  "description": "A backend rendszer tesztelése kulcsfontosságú a webáruház megbízható működésének biztosításához. Az Adali Clothing backend tesztelési stratégiája átfogó és módszeres megközelítést alkalmaz a rendszer minden kritikus komponensének ellenőrzésére.",
+  "source": "@site/docs/developer/backend/backendtest.md",
+  "sourceDirName": "developer/backend",
+  "slug": "/developer/backend/backendtest",
+  "permalink": "/docs/developer/backend/backendtest",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Mutyii0425/adaliclothing/tree/main/my-website/docs/developer/backend/backendtest.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 7,
+  "frontMatter": {
+    "sidebar_position": 7
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Backend",
+    "permalink": "/docs/developer/backend/"
+  },
+  "next": {
+    "title": "Backend útvonalak",
+    "permalink": "/docs/developer/backend/routes"
+  }
+}

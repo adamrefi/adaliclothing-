@@ -1,0 +1,24 @@
+{
+  "id": "developer/backend/backend",
+  "title": "Backend",
+  "description": "Az Adali Clothing webáruház backend rendszerét a modern szoftverfejlesztési gyakorlatoknak megfelelően MVC (Model-View-Controller) architektúra szerint építettük fel. Ez a strukturált megközelítés nemcsak tiszta kódszerkezetet biztosít, hanem jól elkülöníthető felelősségi köröket is teremt a rendszer különböző komponensei között. A fejlesztés során a Node.js környezetet választottuk, amely a gyors, aszinkron működésével kiváló alapot biztosít egy e-kereskedelmi platform számára. Az Express.js keretrendszer használatával pedig hatékonyan tudtuk kezelni a HTTP kéréseket és válaszokat, miközben a MySQL adatbázis stabil és megbízható adattárolást biztosít.",
+  "source": "@site/docs/developer/backend/backend.md",
+  "sourceDirName": "developer/backend",
+  "slug": "/developer/backend/",
+  "permalink": "/docs/developer/backend/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Mutyii0425/adaliclothing/tree/main/my-website/docs/developer/backend/backend.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adali Clothing Projektleírás: ruhavásárló weboldal",
+    "permalink": "/docs/"
+  },
+  "next": {
+    "title": "Backend tesztelés",
+    "permalink": "/docs/developer/backend/backendtest"
+  }
+}

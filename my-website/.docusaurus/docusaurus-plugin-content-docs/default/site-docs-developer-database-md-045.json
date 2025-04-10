@@ -1,0 +1,24 @@
+{
+  "id": "developer/database",
+  "title": "database",
+  "description": "role enum('user','admin') DEFAULT 'user',",
+  "source": "@site/docs/developer/database.md",
+  "sourceDirName": "developer",
+  "slug": "/developer/database",
+  "permalink": "/docs/developer/database",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Mutyii0425/adaliclothing/tree/main/my-website/docs/developer/database.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Backend útvonalak",
+    "permalink": "/docs/developer/backend/routes"
+  },
+  "next": {
+    "title": "Frontend áttekintés",
+    "permalink": "/docs/developer/frontend/overview"
+  }
+}

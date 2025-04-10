@@ -1,0 +1,23 @@
+{
+  "id": "developer/frontend/fronttest",
+  "title": "Frontend tesztelés",
+  "description": "Ábra: Frontend tesztelési folyamat és komponensek",
+  "source": "@site/docs/developer/frontend/fronttest.md",
+  "sourceDirName": "developer/frontend",
+  "slug": "/developer/frontend/fronttest",
+  "permalink": "/docs/developer/frontend/fronttest",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Mutyii0425/adaliclothing/tree/main/my-website/docs/developer/frontend/fronttest.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 5,
+  "frontMatter": {
+    "sidebar_position": 5
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Frontend áttekintés",
+    "permalink": "/docs/developer/frontend/overview"
+  }
+}

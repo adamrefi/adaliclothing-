@@ -1,0 +1,24 @@
+{
+  "id": "developer/backend/models",
+  "title": "models",
+  "description": "- Kupon frissítése: Felhasználói kupon adatainak frissítése",
+  "source": "@site/docs/developer/backend/models.md",
+  "sourceDirName": "developer/backend",
+  "slug": "/developer/backend/models",
+  "permalink": "/docs/developer/backend/models",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Mutyii0425/adaliclothing/tree/main/my-website/docs/developer/backend/models.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Adali Clothing Dokumentáció",
+    "permalink": "/docs/"
+  },
+  "next": {
+    "title": "routes",
+    "permalink": "/docs/developer/backend/routes"
+  }
+}

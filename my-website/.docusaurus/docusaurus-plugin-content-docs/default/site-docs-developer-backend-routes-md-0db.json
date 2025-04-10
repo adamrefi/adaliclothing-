@@ -1,0 +1,24 @@
+{
+  "id": "developer/backend/routes",
+  "title": "Backend útvonalak",
+  "description": "Az Adali Clothing webáruház backend rendszere jól strukturált útvonalakkal rendelkezik, amelyek biztosítják a frontend és a backend közötti kommunikációt. Az útvonalak moduláris felépítése lehetővé teszi a könnyű karbantarthatóságot és bővíthetőséget.",
+  "source": "@site/docs/developer/backend/routes.md",
+  "sourceDirName": "developer/backend",
+  "slug": "/developer/backend/routes",
+  "permalink": "/docs/developer/backend/routes",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Mutyii0425/adaliclothing/tree/main/my-website/docs/developer/backend/routes.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Backend tesztelés",
+    "permalink": "/docs/developer/backend/backendtest"
+  },
+  "next": {
+    "title": "Frontend áttekintés",
+    "permalink": "/docs/developer/frontend/overview"
+  }
+}

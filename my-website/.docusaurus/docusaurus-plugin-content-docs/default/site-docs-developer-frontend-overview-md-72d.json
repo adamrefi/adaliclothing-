@@ -1,0 +1,27 @@
+{
+  "id": "developer/frontend/overview",
+  "title": "Frontend áttekintés",
+  "description": "Az Adali Clothing webáruház frontend része React.js keretrendszerre épül, modern webes technológiákat alkalmazva a felhasználói élmény optimalizálása érdekében.",
+  "source": "@site/docs/developer/frontend/overview.md",
+  "sourceDirName": "developer/frontend",
+  "slug": "/developer/frontend/overview",
+  "permalink": "/docs/developer/frontend/overview",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Mutyii0425/adaliclothing/tree/main/my-website/docs/developer/frontend/overview.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Backend útvonalak",
+    "permalink": "/docs/developer/backend/routes"
+  },
+  "next": {
+    "title": "Frontend tesztelés",
+    "permalink": "/docs/developer/frontend/fronttest"
+  }
+}

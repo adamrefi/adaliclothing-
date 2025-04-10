@@ -1,0 +1,24 @@
+{
+  "id": "intro",
+  "title": "Adali Clothing Projektleírás: ruhavásárló weboldal",
+  "description": "Bevezetés",
+  "source": "@site/docs/intro.md",
+  "sourceDirName": ".",
+  "slug": "/",
+  "permalink": "/docs/",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Mutyii0425/adaliclothing/tree/main/my-website/docs/intro.md",
+  "tags": [],
+  "version": "current",
+  "sidebarPosition": 1,
+  "frontMatter": {
+    "sidebar_position": 1,
+    "slug": "/"
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Backend",
+    "permalink": "/docs/developer/backend/"
+  }
+}

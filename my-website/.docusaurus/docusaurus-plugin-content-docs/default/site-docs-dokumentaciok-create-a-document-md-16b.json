@@ -1,0 +1,20 @@
+{
+  "id": "dokumentációk/create-a-document",
+  "title": "create-a-document",
+  "description": "",
+  "source": "@site/docs/dokumentációk/create-a-document.md",
+  "sourceDirName": "dokumentációk",
+  "slug": "/dokumentációk/create-a-document",
+  "permalink": "/docs/dokumentációk/create-a-document",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/Mutyii0425/adaliclothing/tree/main/my-website/docs/dokumentációk/create-a-document.md",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Frontend áttekintés",
+    "permalink": "/docs/developer/frontend/overview"
+  }
+}
