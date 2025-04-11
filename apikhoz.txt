@@ -1,0 +1,43 @@
+backend.env 
+
+EMAIL_USER=adaliclothing@gmail.com
+EMAIL_PASS=fowurjrgaulthknf
+DB_HOST=localhost
+DB_USER=webshoppp
+DB_PASS=Premo900
+DB_NAME=webshoppp
+
+
+vision-api-key.json
+
+{
+    "type": "service_account",
+    "project_id": "adali-clothing",
+    "private_key_id": "9f8e80dc536d98934d5d88ae34182f062af2dc8d",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDENddb5Gy/EdPW\nGlurH46aGQa6uCNaAMkc4NxeVwjZQ8L6PIUlt0+dYLF47YHW8VPai8oPzufZHbIY\nYLmxNXHRSheYweX+7JH9ImFsgt6SxvCvCG2AbMUTLwY75rvYuEC5OJBy56hn0HwP\n5qGmOFni/uAm9rd9jSIoHnuBliZuVVIP36AXxk2NwPJGAxyHF0VkBxj5vz3H0M3s\nLRXb72yqKD4tw7qGWx7adafCINQ0RiMBOv+16H0umGIrNWKFBejacQ9RDOK52v4y\n8z2Or1D8aFn+v4HweczNcI9mm46Zhx8ENgJgiL1qSPp9x3b1x//l7NbeLGrL94Ss\nTcXGkKqhAgMBAAECggEAUItln6RSe9D+q9pgHQw0Rs/VMlsar/y4kjFAZT3HNSEa\n7gxgAA6TESC7Wc/tx+WDLajKxtiB1l/ZVyaFs9gjo+2NaDjYiGBmwYoWgivq4Efo\nT4HfKaP89pYMMhTSsfFZKG+u5GxydkNgWkqruwdQ5t0H+Ra4VkLUbbGts5GGry2B\nIOoJVBgWzP/CZIgOKlw9dAhymvYM3AOypGUfz5x5nup/UHqH9IIf/yw8UUZRUthY\nqcaNvQMc7ah4nowWR06F+PC9coU2KlLdfiSbS8gNsT1qDCjTTBhY8M4VEzP4n+Yp\ndT8+cazqO3uDpymTHjiOfSq7nVqnV5Dxu5FLOOd3zQKBgQDipcdWhRpEffIOireX\nSRHvKJDRaHbLLduNnlVxG2s1vQRACpsHelZ4UAiVgBzzwFRV7iUeKB9mFlokGFFx\nTwG00VS4Kc9pHAUorSsNaIW+Z9hxWbdSsGfnBM+AActyokT+Kx5KoOQGuVP1jOrX\nUkSvGh2dGJg/8QuqAs0Csap7awKBgQDdnvPs+/fqEYGSMGjZxBe97nFy9H8iyvo4\nvPzRvp7AZTyZGaeARV5K9/fct8ZmXYddDhGTOZoQeVZS8QR1fAtKLwOsEZESvNFp\nOYXBSbDJI+8GTx3AkwV4RDV6Jbk+ptV8CtMJX/DgvygqK1LrcUX4int4iUtijFtz\neCeLjkshIwKBgQDOa33pZsBNsQdMBzq+JmaXErMShbnrwpA7owDeSsKR5tyAFyiq\n3tjyKrImts+nkHs+5+4WUSSHrcPbK+rA79v1+tDWCf5FFKf+K/kR9SgaCiou0i8M\nuG1pEhCJ3RiWBwQfGNY10eLb3N6CvR0Fjn/PmlFuSoAffEHLTVG6KmXCkQKBgDPj\nM1kY5UJ4Ns3zZ5kUwDpHyWgQtnN+8na2SLsS1jhVe4qc5wqxMxJ6XB3hKSJuY3L2\nCEdgBSI2Rm/E3jZjhIEp4MI4mq64Zo8sWJSYnDt7nkrr2xtrUKyHy719d5Gjnfgc\n0KwxOkRkfRLicdeN/cPjKGVgP7YjBoZSa2/RMOXhAoGAOQl1Xew+yOoaukfwBoHP\na4tw4Z8eAyHBbrNYZNhuQdEromo40EyP+gBZGyBjlVDBDtAwtFzokf9IQxXw+T+C\n6Ugcl0Qo2BSQ6/4ciIzir0aNJDJ719yFDANcHTkyo02c+lbjMqte5Ym05oo/AgrP\noHL8yvdEiu3aTGOI56X+TM8=\n-----END PRIVATE KEY-----\n",
+    "client_email": "vision-api-user@adali-clothing.iam.gserviceaccount.com",
+    "client_id": "116173262452715574818",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vision-api-user%40adali-clothing.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+  }
+
+
+
+vision-api-key1.json
+
+{
+  "type": "service_account",
+  "project_id": "adali-clothing-web",
+  "private_key_id": "1c721fd125a99aa95980ff31b402aa9ca5dc1ba5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDEDZsPfEo6Da0Y\n9bZ4gE/NvqWGHtEDu4brwxrsVG2sImTRGFL7J0U03QeOOO/8P4mGEKFl1fj6Rgxs\nSynokGPmvEQprg24zlwxsOZAmlmz1gq9jie2Gz8FmA0swVrK0tgzuPFxI25xl48X\nzz8GxNmylB1Mb0JsPMECh9/3AZZbbhE2yUpNz8zljU+t533SFOoLVzvbbKnGd7cF\nQQ3V9KnjmCfE6jr1yb1jpS7XLDWsWfh+OaNX3nATDKoibzZbQvnqEsmOYOoJZOn4\n1mFwdhIaprSyYbCEAexbRlnR4kvFwm6mG/SD0NNUTz8age5m2OShNklxy38WwmDg\nKQN/CcyRAgMBAAECggEACmJnW0APyTCIYbMhnrM6ruTdTPvowaorGsWpQVl1O+3w\nMb5YZlzRksvOkrUfuohlxRXwS5XkZ8LCNZH7YrnzrbD9Cglh6Q8WpWvnnUZDsDWr\nGNhc0H2z1ky0DXHiKI43lRFDqiTInMAMrHPd9HKErqufW+kkfznOVh9K8NEa5QWo\n/VpZS+Yepg9y6YBHRSU1qzNAsk+Rb5M8H2Fmlz35Hz7n+wzwWLOhGtMuF0RQJvhH\nZ3JbOJXee6vEyihC+XSlsenxgfDV0f1KIx8K0YHNoXGo5V0TIJWHgBnJi9+pz30L\noQTP2LPO041yHWNKW667+5C6xFSfmmslmYjQahsS4QKBgQD9vKs4bOW2BDRaJslB\n7BhruUptEH+mXv+sqr8RIGVFRUg/FVw5XrsIwTewh1d3LTR5mbowQegYsBt95F5D\n/wfxcQF/vfjGFrM4jwwutGzvuyq1e6RYfHOBPdqxGA/aeZWyeHH3br5wG2HjjLz1\nnn/HBPJKrN5plwrY6jzhvh/18QKBgQDFzTu/KXJME1+NYu5VYjqe7sTVWfw/OcnN\na6gq1jwVGRlvN8f6rNQZl+SiQPWnvROFFHXjDDiSE8KnrYk9720G+/fRrKaj9Won\nRJ3+56qsF3nxnWz7pjd8tTjWGdIrvh2iyBFPL2EHG8IrvH7OXuRPjoYTcRQxgYYS\nrNmJl1IgoQKBgQCqHukdd8W7962yE/cz/7uP3jeMUFeFkIQTnJdmQDYl74G06flf\nbagxAnr4HIYEHYblULCI0mduxgRor8iUBlWpB39dyl0VUvrunNoqJkYzpWXJMBDM\nUwSOTo5l1iAq9wHrGt4ua027lGBZVG8Mryw0n5hjgOvOF7rqHIKdR//dwQKBgQCk\n3UrPKlx5zCv4TF0aDaWOkrS8nyQADsqEzRZ9ndK2QxVP/c5QwXyHWHLYSgx2osGC\nSmt3stfz6UR1Pc8GMGlPSPRlbuH2BrdTw31s2OsIRQj+uZf8p63X47Rbv2nNy8gn\nxVmoBnV410of6hxHJhBlvwVBbx7FpI97QVaPt/BcAQKBgAmKXxHHFtzf9mAZ4Hm7\nxYRBcWOF99jddQ5+f/Q37z+WTAGzs76svA7rzPkynVAqJLwuMVZdj2+KxsdusmIZ\nxk41gZjEZMgeQBpa1BBZa3gU4RljsbaV6smWvnz7iLSrAV7v+ZTSY2WEsbO+upBx\ng0Oe9eOBxgqiK4I7h3j8RRfz\n-----END PRIVATE KEY-----\n",
+  "client_email": "csalimate@adali-clothing-web.iam.gserviceaccount.com",
+  "client_id": "108829283012054971566",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/csalimate%40adali-clothing-web.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
