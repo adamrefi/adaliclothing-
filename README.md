@@ -24,7 +24,6 @@ A projekthez a következő függőségek szükségesek:
 - **Programozási nyelv**: JavaScript
 - **Csomagkezelő**: Npm
 
-
 ### Telepítés
 
 A projekt két fő részből áll: backend (adaliclothing-mvc) és frontend (react2). Mindkettőt külön kell telepíteni:
@@ -78,9 +77,7 @@ npx mocha "react2/frontendteszt/**/*.test.js"
 
 ## 📖 Dokumentáció
 
-Részletesebb dokumentációért látogasson el a [Docusaurus oldalunkra](https://adalidocument.vercel.app) vagy tekintse meg a [webszerveres alkalmazásunkat](https://adaliclothing.vercel.app). 
-
-A webszerveres alkalmazás GitHub repository-ja: https://github.com/Mutyii0425/webes
+Részletesebb dokumentációért látogasson el a [Docusaurus oldalunkra](https://adalidocument.vercel.app) vagy tekintse meg a [webszerveres alkalmazásunkat](https://adaliclothing.vercel.app). A webszerveres alkalmazás GitHub repository-ja: https://github.com/Mutyii0425/webes
 
 ## 📂 Adatbázis beállítása phpMyAdmin segítségével
 
@@ -105,4 +102,23 @@ A backend megfelelő működéséhez szükséges, hogy a webshoppp.sql fájl be 
 - Kattints a "Végrehajtás" gombra.
 
 Ezzel az adatbázis kész és a backend kapcsolat is biztosított.
-Réfi Ádám,Csali Máté projekt feladat.docx
+
+## 📄 Projekt dokumentáció és API kulcsok
+
+### Projekt dokumentáció megtekintése
+
+A projekt részletes dokumentációja elérhető Word formátumban. A dokumentáció megtekintéséhez:
+
+- [Letöltés: Réfi Ádám, Csali Máté projekt feladat.docx](./Réfi%20Ádám,Csali%20Máté%20projekt%20feladat.docx)
+
+### API kulcsok és konfigurációs információk
+
+Az alkalmazás működéséhez szükséges API kulcsok és egyéb konfigurációs információk:
+
+- [Letöltés: API kulcsok](./apikhoz.txt)
+
+## 👨‍💻 Fejlesztők
+
+A projektet készítette:
+- Réfi Ádám
+- Csali Máté
