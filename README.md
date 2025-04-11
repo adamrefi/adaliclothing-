@@ -82,7 +82,7 @@ npm test
 ```bash
 # Frontend tesztek futtatása
 cd /adaliclothing-/react2/frontendteszt
-npm test
+npx mocha "react2/frontendteszt/**/*.test.js"
 ```
 
 ## Dokumentáció
