@@ -43,19 +43,19 @@ A projekt két fő részből áll: backend (adaliclothing-mvc) és frontend (rea
 
 2. **Backend telepítése:**
    ```bash
-   cd adaliclothing/adaliclothing-mvc/backend
+   cd adaliclothing-/adaliclothing-mvc/backend
    npm install
    ```
 
 3. **Frontend telepítése:**
    ```bash
-   cd /adaliclothing-/react2
+   cd adaliclothing-/react2
    npm install
    ```
 
 4. **Backend szerver indítása:**
    ```bash
-   cd /adaliclothing-/adaliclothing-mvc/backend
+   cd adaliclothing-/adaliclothing-mvc/backend
    node server.js
    ```
 
