@@ -78,7 +78,7 @@ npx mocha "react2/frontendteszt/**/*.test.js"
 
 ## 📖 Dokumentáció
 
-Részletesebb dokumentációért látogasson el a Docusaurus oldalunkra vagy tekintse meg a webszerveres alkalmazásunkat.
+Részletesebb dokumentációért látogasson el a [Docusaurus oldalunkra](https://adalidocument.vercel.app) vagy tekintse meg a [webszerveres alkalmazásunkat](https://adaliclothing.vercel.app). 
 
 A webszerveres alkalmazás GitHub repository-ja: https://github.com/Mutyii0425/webes
 
