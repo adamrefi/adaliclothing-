@@ -23,7 +23,7 @@ Ez a projekt egyszerűsíti a fejlesztési folyamatot azáltal, hogy olyan alapv
 A projekthez a következő függőségek szükségesek:
 - **Programozási nyelv**: JavaScript
 - **Csomagkezelő**: Npm
-- **Konténer futtatókörnyezet**: Docker
+
 
 ### Telepítés
 
