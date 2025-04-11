@@ -7,7 +7,7 @@ const createConnection = async () => {
   try {
     const connection = await mysql.createConnection({
       host: process.env.DB_HOST || 'localhost',
-      port: process.env.DB_PORT || 3307,
+      port: process.env.DB_PORT || 3306,
       user: process.env.DB_USER || 'webshoppp',
       password: process.env.DB_PASS || 'Premo900',
       database: process.env.DB_NAME || 'webshoppp'

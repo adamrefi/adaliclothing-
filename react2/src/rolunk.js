@@ -335,6 +335,25 @@ const AboutUs = () => {
                           onKeyDown={handleListKeyDown}
                           sx={{ py: 1 }}
                         >
+                           <MenuItem 
+                            onClick={handleClose}
+                            sx={{
+                              py: isExtraSmall ? 1 : 1.5,
+                              px: isExtraSmall ? 1.5 : 2,
+                              color: darkMode ? '#fff' : '#333',
+                              '&:hover': {
+                                backgroundColor: darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.04)',
+                              },
+                              gap: 2,
+                            }}
+                          >
+                            <Typography variant="body1" sx={{ 
+                              fontWeight: 500,
+                              fontSize: isExtraSmall ? '0.8rem' : 'inherit'
+                            }}>
+                              {userName} profilja
+                            </Typography>
+                          </MenuItem>
                          <MenuItem 
                                                      onClick={() => {
                                                        handleClose();
