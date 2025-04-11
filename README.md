@@ -72,7 +72,7 @@ cd adaliclothing-mvc/backend/test
 npm test
 
 # Frontend tesztek futtatása
-cd /adaliclothing-/react2/frontendteszt
+cd adaliclothing-/react2/frontendteszt
 npx mocha "react2/frontendteszt/**/*.test.js"
 ```
 
