@@ -117,6 +117,14 @@ Az alkalmazás működéséhez szükséges API kulcsok és egyéb konfiguráció
 
 - [Letöltés: API kulcsok](./apikhoz.txt)
 
+**Fontos**: A letöltött API kulcsokat és konfigurációs fájlokat a következőképpen kell elhelyezni a backend mappában:
+
+1. A `backend.env` fájlt helyezd el az `adaliclothing-mvc/backend/` mappában
+2. A `vision-api-key.json` fájlt helyezd el az `adaliclothing-mvc/backend/` mappában
+3. A `vision-api-key1.json` fájlt helyezd el az `adaliclothing-mvc/backend/` mappában
+
+Ezek a fájlok szükségesek a Google Vision API és egyéb szolgáltatások megfelelő működéséhez.
+
 ## 👨‍💻 Fejlesztők
 
 A projektet készítette:
