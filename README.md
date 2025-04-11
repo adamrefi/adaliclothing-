@@ -105,3 +105,4 @@ A backend megfelelő működéséhez szükséges, hogy a webshoppp.sql fájl be 
 - Kattints a "Végrehajtás" gombra.
 
 Ezzel az adatbázis kész és a backend kapcsolat is biztosított.
+Réfi Ádám,Csali Máté projekt feladat.docx
