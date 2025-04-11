@@ -10,8 +10,6 @@ Az Adali Clothing egy átfogó fejlesztői eszköz, amely az e-kereskedelmi alka
 
 Ez a projekt egyszerűsíti a fejlesztési folyamatot azáltal, hogy olyan alapvető funkciókat biztosít, amelyek növelik a produktivitást és a megbízhatóságot. A főbb jellemzők közé tartoznak:
 
-- ✅ **Adatbázis inicializálás**: Gyorsan beállíthatja az adatbázis sémáját SQL dump-okkal a konzisztens környezetek érdekében.
-- 🐳 **Docker támogatás**: Könnyen kezelhetők a több konténeres alkalmazások, egyszerűsítve a telepítést és fejlesztést.
 - 🧪 **Automatizált tesztelés**: Biztosítja a megbízhatóságot átfogó tesztekkel mind a frontend, mind a backend funkcionalitásokhoz.
 - 📱 **Reszponzív dizájn**: A Material-UI használatával modern, felhasználóbarát felületet biztosít, amely zökkenőmentesen alkalmazkodik a különböző eszközökhöz.
 - 🔐 **Felhasználói hitelesítés**: Robusztus hitelesítési rendszert implementál a biztonság és a felhasználói élmény növelése érdekében.
