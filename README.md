@@ -51,7 +51,7 @@ node server.js
 
 5. **Frontend fejlesztői szerver indítása (új terminál ablakban):**
 ```bash
-cd /adaliclothing-/react2/src
+cd adaliclothing-/react2/src
 npm start
 ```
 
