@@ -78,4 +78,4 @@ npm test
 ```
 
 ## Dokumentáció
-Részletesebb dokumentációért látogasson el a [Docusaurus oldalunkra](https://adaliclothing.vercel.app)
+Részletesebb dokumentációért látogasson el a [Docusaurus oldalunkra](https://adalidoco.vercel.app)
